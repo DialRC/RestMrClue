@@ -3,7 +3,7 @@
 A REST API server based on [JAVA Spark Framework](https://github.com/perwendel/spark).
 
 ## Protocol:
-### 1. Initialize a New Session
+### Initialize a New Session
 POST http://localhost:port/init
 
 ```javascript
@@ -13,7 +13,7 @@ POST http://localhost:port/init
 }
 ```
 
-### 2. Get the Next Response of a Ongoing Session
+### Get the Next Response of a Ongoing Session
 POST http://locahost:port/next
 
 ```javascript
@@ -25,7 +25,7 @@ POST http://locahost:port/next
 }
 ```
 
-### 4. Expected Return Format
+### Expected Return Format
 
 All the POST requests will have the same return JSON format. 
 ```javascript
