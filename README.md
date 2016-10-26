@@ -37,3 +37,6 @@ All the POST requests will have the same return JSON format.
 }
 ```
 If non-verbal output is also needed. Please add the non-verbal features into the JSON.
+
+### Timezone.
+For easier synchronization with DialPort server logging system. Use UTC-4 timezone for all time stamps. 
