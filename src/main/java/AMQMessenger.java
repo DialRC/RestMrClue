@@ -39,7 +39,7 @@ public class AMQMessenger {
      * Run the instance and send the message to the given ip/port/sendTopic
      * The thread terminates right after the message is sent
      */
-    private void send(String textMessage, String requestId) {
+    private boolean send(String textMessage, String requestId) {
         try {
             // Create the destination (Topic or Queue)
             Destination destination = session.createTopic(sendTopic+requestId);
@@ -58,9 +58,11 @@ public class AMQMessenger {
             // Tell the producer to send the message
             logger.info("Sent message: "+ textMessage + " with sendTopic: " + this.sendTopic+requestId);
             producer.send(message);
+            return true;
         }
         catch (Exception e) {
             logger.error(e.getStackTrace());
+            return false;
         }
     }
     private String receive(String requestId) {
@@ -87,15 +89,18 @@ public class AMQMessenger {
 
         } catch (Exception e) {
             logger.error(e);
-            return "error";
+            return "Error: receive message failed.";
         }
     }
 
     public String sendAndReceive(String message) {
         // get a unique ID for topic
         String requestId = UUID.randomUUID().toString();
-        this.send(message, requestId);
-        return receive(requestId);
+        if (this.send(message, requestId)) {
+            return receive(requestId);
+        } else {
+            return "Error: send message failed.";
+        }
     }
 
 }

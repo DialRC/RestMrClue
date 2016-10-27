@@ -12,7 +12,7 @@ public class App
     public static int httpPort = 5678;
     public static int amqPort = 61616;
     public static String amqIP = "localhost";
-    
+
     public static void main( String[] args )
     {
         logger.info(String.format("Server Start Running at %d", App.httpPort));
