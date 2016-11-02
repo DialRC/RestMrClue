@@ -40,9 +40,10 @@ public class AMQMessenger {
      * The thread terminates right after the message is sent
      */
     private boolean send(String textMessage, String requestId) {
+        String curSendTopic = this.sendTopic + "-" + requestId;
         try {
             // Create the destination (Topic or Queue)
-            Destination destination = session.createTopic(sendTopic+requestId);
+            Destination destination = session.createTopic(curSendTopic);
 
             // Create a MessageProducer from the Session to the Topic or Queue
             MessageProducer producer = session.createProducer(destination);
@@ -56,7 +57,7 @@ public class AMQMessenger {
             message.setStringProperty("MESSAGE_PREFIX", "vr" + textMessage.split(" ", 2)[0]);
 
             // Tell the producer to send the message
-            logger.info("Sent message: "+ textMessage + " with sendTopic: " + this.sendTopic+requestId);
+            logger.info("Sent message: "+ textMessage + " with sendTopic: " + curSendTopic);
             producer.send(message);
             return true;
         }
