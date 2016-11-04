@@ -33,6 +33,7 @@ All the POST requests will have the same return JSON format.
     sessionID: "USR_1234",
     sys: "This word starts with A",
     score: 10,
+    timer: 140,
     terminal: False
     timeStamp: "yyyy-MM-dd'T'HH-mm-ss.SSS"
 }
