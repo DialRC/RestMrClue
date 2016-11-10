@@ -24,6 +24,17 @@ POST http://locahost:port/next
     timeStamp: "yyyy-MM-dd'T'HH-mm-ss.SSS"
 }
 ```
+There is also a specical symbol to deal with time out. The message will
+still be sent via port/next
+
+```javascript
+{
+    sessionID: "USR_1234",
+    text: "TIME_OUT", 
+    asrConf: 1.0,
+    timeStamp: "yyyy-MM-dd'T'HH-mm-ss.SSS"
+}
+```
 
 ### Expected Return Format
 
@@ -34,7 +45,9 @@ All the POST requests will have the same return JSON format.
     sys: "This word starts with A",
     score: 10,
     timer: 140,
-    terminal: False
+    terminal: False,
+    roundScore: 4,
+    totalScore: 10,
     timeStamp: "yyyy-MM-dd'T'HH-mm-ss.SSS"
 }
 ```
