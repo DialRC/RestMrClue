@@ -48,6 +48,7 @@ All the POST requests will have the same return JSON format.
     terminal: False,
     roundScore: 4,
     totalScore: 10,
+    version: "1.0-xxx",
     timeStamp: "yyyy-MM-dd'T'HH-mm-ss.SSS"
 }
 ```
